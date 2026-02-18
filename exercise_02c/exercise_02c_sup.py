@@ -1,4 +1,6 @@
 import sys
+import traceback
+# imageio.v3 as iio
 
 def limpiar_informacion(datos: bytes, i:int) -> int:
     n = len(datos)
@@ -10,7 +12,7 @@ def limpiar_informacion(datos: bytes, i:int) -> int:
             continue
         #Saltar comentarios
         if linea == ord("#"):
-            while i < n and datos[i] not in ord(b"\n"):
+            while i < n and datos[i] not in (10, 13):
                 i += 1
             continue
         break
@@ -33,8 +35,11 @@ def leer_imagen(path:str):
     if formato not in ("P5", "P2"):
         raise ValueError("Formato no soportado: {}".format(formato))
     ancho, i = obtener_informacion(data, i)
+    ancho = int(ancho)
     alto, i = obtener_informacion(data, i)
+    alto = int(alto)
     max_valor, i = obtener_informacion(data, i)
+    max_valor = int(max_valor)
     if max_valor > 255:
         raise ValueError("Valor máximo no soportado: {}".format(max_valor))
     if ancho <= 0 or alto <= 0:
@@ -85,7 +90,5 @@ def main():
 if __name__ == "__main__":
     try:
         main()
-    except Exception as e:
-        print("Error:", e)
-        sys.exit(1)
-
+    except Exception:
+        traceback.print_exc()
