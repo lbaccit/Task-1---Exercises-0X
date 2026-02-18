@@ -67,19 +67,19 @@ def escribir_pgm(path:str, header: bytes, pixeles: bytes):
         f.write(header)
         f.write(pixeles)
 
-def supremum(imagen1: bytes, imagen2: bytes) -> bytes:
-    return bytes(max(p1, p2) for p1, p2 in zip(imagen1, imagen2))
+def infimum(imagen1: bytes, imagen2: bytes) -> bytes:
+    return bytes(min(p1, p2) for p1, p2 in zip(imagen1, imagen2))
 
 def main():
     if len(sys.argv) != 4:
-        print("Uso: python exercise_02c_sup.py imagen1.pgm imagen2.pgm resultado.pgm")
+        print("Uso: python exercise_02c_inf.py imagen1.pgm imagen2.pgm resultado.pgm")
         sys.exit(2)
     path1, path2, output_path = sys.argv[1], sys.argv[2], sys.argv[3]
     ancho1, alto1, max_valor1, imagen1, header1 = leer_imagen(path1)
     ancho2, alto2, max_valor2, imagen2, header2 = leer_imagen(path2)
     if (ancho1, alto1) != (ancho2, alto2):
         raise ValueError("Las imágenes deben tener las mismas dimensiones.")
-    output_pixels = supremum(imagen1, imagen2)
+    output_pixels = infimum(imagen1, imagen2)
     escribir_pgm(output_path, header1, output_pixels)
 
 if __name__ == "__main__":
