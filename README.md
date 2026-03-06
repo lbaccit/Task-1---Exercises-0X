@@ -1,4 +1,9 @@
 # Task-1---Exercises-0X
+
+Rocio Marquez -  rocio.marquez@alumnos.upm.es
+
+Luciana Bacci T - l.bacci@alumnos.upm.es
+
 Las carpetas contienen los códigos ejecutables, la persona que los ejecute debera colocar los respectivos inputs en la consola, ejemplo del ejercicio 2
 ejecutar: ""python exercise_02a_thresh.py cam_74.pgm 100 cam_74_100_output.pgm"", teniendo en cuenta que el archivo del primer argumento debe ser un archivo existente en el mismo directorio del código o con una ruta al archivo designado, en el caso del output es la salida esperada, por lo que el nombre que se le asigna, sera el archivo de salida.
 
