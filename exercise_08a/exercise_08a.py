@@ -70,8 +70,7 @@ def closing(pixels, ancho, alto, i):
 
     di = dilatacion(pixels, ancho, alto, i)
     return erosion(di, ancho, alto, i)
-
-#vamos a medir el ruido de cada uno 
+#vamos a medir el ruido de los vecinos, así viendo cuanto se diferencian entre ellos, (cuanto discrepan entre si, para saber si es ruido o no )
 def medir_ruido(img, ancho, alto):
 
     ruido = 0
